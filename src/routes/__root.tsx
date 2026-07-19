@@ -10,7 +10,8 @@ import {
 import { useEffect, useState, type ReactNode } from "react";
 import { Toaster } from "sonner";
 import { Menu, ChevronDown, ChevronRight } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -86,20 +87,21 @@ function RootShell({ children }: { children: ReactNode }) {
 function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="text-2xl">🐾</span>
-          <span className="font-display text-xl font-semibold">NewHomePet</span>
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/90 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:py-4">
+        <Link to="/" aria-label="NewHomePet home" className="flex items-center gap-2">
+          <span className="text-2xl" aria-hidden="true">🐾</span>
+          <span className="font-display text-lg font-semibold sm:text-xl">NewHomePet</span>
         </Link>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
             aria-label="Open menu"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/80"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
           >
-            <Menu className="h-5 w-5" />
+            <Menu className="h-5 w-5" aria-hidden="true" />
           </SheetTrigger>
-          <SheetContent side="right" className="w-[88%] sm:w-96 overflow-y-auto p-0">
+          <SheetContent side="right" className="w-[92%] sm:w-96 overflow-y-auto p-0">
+            <SheetTitle asChild><VisuallyHidden>Site navigation</VisuallyHidden></SheetTitle>
             <MenuPanel onNavigate={() => setOpen(false)} />
           </SheetContent>
         </Sheet>
@@ -134,15 +136,15 @@ function MenuPanel({ onNavigate }: { onNavigate: () => void }) {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   return (
     <div className="flex h-full flex-col">
-      <div className="flex items-center gap-2 px-6 py-5 border-b border-border/60">
-        <span className="text-2xl">🐾</span>
+      <div className="flex items-center gap-2 px-5 py-4 border-b border-border/60">
+        <span className="text-2xl" aria-hidden="true">🐾</span>
         <span className="font-display text-xl font-semibold text-primary">NewHomePet</span>
       </div>
-      <nav className="flex-1 px-2 py-4 text-lg">
-        <Link to="/about" onClick={onNavigate} className="flex items-center justify-between rounded-lg px-4 py-3 hover:bg-secondary">
-          Our Story <ChevronRight className="h-5 w-5 opacity-60" />
+      <nav aria-label="Main" className="flex-1 px-2 py-3 text-base">
+        <Link to="/about" onClick={onNavigate} className="flex min-h-11 items-center justify-between rounded-lg px-4 py-3 hover:bg-secondary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
+          Our Story <ChevronRight className="h-5 w-5 opacity-60" aria-hidden="true" />
         </Link>
-        <a href="/#puppies" onClick={onNavigate} className="flex items-center justify-between rounded-lg px-4 py-3 hover:bg-secondary">
+        <a href="/#puppies" onClick={onNavigate} className="flex min-h-11 items-center justify-between rounded-lg px-4 py-3 hover:bg-secondary">
           Testimonials
         </a>
         {MENU_GROUPS.map((g) => {
@@ -151,21 +153,22 @@ function MenuPanel({ onNavigate }: { onNavigate: () => void }) {
             <div key={g.label}>
               <button
                 type="button"
+                aria-expanded={isOpen}
                 onClick={() => setOpenGroup(isOpen ? null : g.label)}
-                className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-left hover:bg-secondary"
+                className="flex min-h-11 w-full items-center justify-between rounded-lg px-4 py-3 text-left hover:bg-secondary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
               >
                 <span className={isOpen ? "font-semibold" : ""}>{g.label}</span>
-                {isOpen ? <ChevronDown className="h-5 w-5 opacity-60" /> : <ChevronRight className="h-5 w-5 opacity-60" />}
+                {isOpen ? <ChevronDown className="h-5 w-5 opacity-60" aria-hidden="true" /> : <ChevronRight className="h-5 w-5 opacity-60" aria-hidden="true" />}
               </button>
               {isOpen && (
                 <div className="ml-4 flex flex-col border-l border-border/60">
                   {g.children.map((c) => (
                     c.to ? (
-                      <Link key={c.label} to={c.to} onClick={onNavigate} className="px-5 py-2 text-base text-muted-foreground hover:text-foreground">
+                      <Link key={c.label} to={c.to} onClick={onNavigate} className="min-h-11 px-5 py-2.5 text-sm text-muted-foreground hover:text-foreground">
                         {c.label}
                       </Link>
                     ) : (
-                      <a key={c.label} href={c.href} onClick={onNavigate} className="px-5 py-2 text-base text-muted-foreground hover:text-foreground">
+                      <a key={c.label} href={c.href} onClick={onNavigate} className="min-h-11 px-5 py-2.5 text-sm text-muted-foreground hover:text-foreground">
                         {c.label}
                       </a>
                     )
@@ -175,12 +178,12 @@ function MenuPanel({ onNavigate }: { onNavigate: () => void }) {
             </div>
           );
         })}
-        <Link to="/admin" onClick={onNavigate} className="mt-2 flex items-center justify-between rounded-lg px-4 py-3 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground">
+        <Link to="/admin" onClick={onNavigate} className="mt-2 flex min-h-11 items-center justify-between rounded-lg px-4 py-3 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground">
           Admin
         </Link>
       </nav>
-      <div className="border-t border-border/60 px-6 py-6">
-        <p className="text-base leading-relaxed">
+      <div className="border-t border-border/60 px-5 py-5">
+        <p className="text-sm leading-relaxed">
           <span className="font-semibold">Welcome to NewHomePet.</span> Explore our beautiful, healthy puppies and find a loving companion ready for a new home.
         </p>
       </div>

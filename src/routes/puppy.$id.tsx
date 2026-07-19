@@ -79,21 +79,21 @@ function PuppyPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
-      <Link to="/" className="text-sm text-muted-foreground hover:text-foreground">← Back to puppies</Link>
-      <div className="mt-6 grid gap-10 md:grid-cols-2">
+    <div className="mx-auto max-w-6xl px-4 py-6 md:py-10">
+      <Link to="/" className="inline-flex min-h-11 items-center text-sm text-muted-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">← Back to puppies</Link>
+      <div className="mt-4 grid gap-8 md:mt-6 md:grid-cols-2 md:gap-10">
         <div>
           <PuppyGallery puppy={puppy} />
-          <div className="mt-6">
-            <h1 className="font-display text-4xl font-semibold">{puppy.name}</h1>
-            <div className="mt-2 flex flex-wrap items-center gap-3">
+          <div className="mt-5 md:mt-6">
+            <h1 className="font-display text-3xl font-semibold sm:text-4xl">{puppy.name}</h1>
+            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
               <Stars value={5} />
               <span className="text-sm text-muted-foreground">5.0 rating</span>
-              <span className="text-sm text-muted-foreground">· ❤ Viewed {puppy.view_count.toLocaleString()} times</span>
+              <span className="text-sm text-muted-foreground">· Viewed {puppy.view_count.toLocaleString()} times</span>
             </div>
-            <p className="mt-3 text-muted-foreground">{puppy.breed} · {puppy.gender} · {puppy.age_weeks} weeks {puppy.color ? `· ${puppy.color}` : ""}</p>
+            <p className="mt-3 text-sm text-muted-foreground sm:text-base">{puppy.breed} · {puppy.gender} · {puppy.age_weeks} weeks {puppy.color ? `· ${puppy.color}` : ""}</p>
             <div className="mt-4 flex flex-wrap items-baseline gap-3">
-              <div className="text-3xl font-semibold text-primary">${puppy.price.toLocaleString()}</div>
+              <div className="text-2xl font-semibold text-primary sm:text-3xl">${puppy.price.toLocaleString()}</div>
               <div className="text-sm text-muted-foreground">Reserve today for <span className="font-semibold text-foreground">${reserve.toLocaleString()}</span> (25%)</div>
             </div>
 
@@ -123,29 +123,29 @@ function PuppyPage() {
         </div>
 
 
-        <form onSubmit={onSubmit} className="rounded-3xl border border-border bg-card p-6 shadow-card">
-          <h2 className="font-display text-2xl font-semibold">Checkout</h2>
+        <form onSubmit={onSubmit} aria-label="Reservation checkout" className="rounded-2xl border border-border bg-card p-4 shadow-card sm:rounded-3xl sm:p-6">
+          <h2 className="font-display text-xl font-semibold sm:text-2xl">Checkout</h2>
           <p className="mt-1 text-sm text-muted-foreground">Enter delivery details to reserve {puppy.name}.</p>
 
-          <div className="mt-6 grid gap-4">
-            <Field label="Full name" name="buyer_name" required />
+          <div className="mt-5 grid gap-4 sm:mt-6">
+            <Field label="Full name" name="buyer_name" required autoComplete="name" />
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Email" name="buyer_email" type="email" required />
-              <Field label="Phone" name="buyer_phone" required />
+              <Field label="Email" name="buyer_email" type="email" required autoComplete="email" inputMode="email" />
+              <Field label="Phone" name="buyer_phone" type="tel" required autoComplete="tel" inputMode="tel" />
             </div>
-            <Field label="Address line 1" name="address_line1" required />
-            <Field label="Address line 2 (optional)" name="address_line2" />
+            <Field label="Address line 1" name="address_line1" required autoComplete="address-line1" />
+            <Field label="Address line 2 (optional)" name="address_line2" autoComplete="address-line2" />
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="City" name="city" required />
-              <Field label="State / Region" name="state" required />
+              <Field label="City" name="city" required autoComplete="address-level2" />
+              <Field label="State / Region" name="state" required autoComplete="address-level1" />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Postal code" name="postal_code" required />
-              <Field label="Country" name="country" required defaultValue="United States" />
+              <Field label="Postal code" name="postal_code" required autoComplete="postal-code" inputMode="numeric" />
+              <Field label="Country" name="country" required autoComplete="country-name" defaultValue="United States" />
             </div>
             <label className="block text-sm">
               <span className="mb-1 block font-medium">Delivery notes (optional)</span>
-              <textarea name="delivery_notes" rows={3} className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:ring-2 focus:ring-ring focus:outline-none" />
+              <textarea name="delivery_notes" rows={3} className="min-h-11 w-full rounded-lg border border-input bg-background px-3 py-2 text-base focus:ring-2 focus:ring-ring focus:outline-none sm:text-sm" />
             </label>
 
             <div>
@@ -242,7 +242,7 @@ function PuppyFacts({ puppy }: { puppy: Puppy }) {
 }
 
 
-function Field({ label, name, type = "text", required, defaultValue }: { label: string; name: string; type?: string; required?: boolean; defaultValue?: string }) {
+function Field({ label, name, type = "text", required, defaultValue, autoComplete, inputMode }: { label: string; name: string; type?: string; required?: boolean; defaultValue?: string; autoComplete?: string; inputMode?: "text" | "email" | "tel" | "numeric" | "decimal" | "search" | "url" | "none" }) {
   return (
     <label className="block text-sm">
       <span className="mb-1 block font-medium">{label}</span>
@@ -251,7 +251,9 @@ function Field({ label, name, type = "text", required, defaultValue }: { label: 
         type={type}
         required={required}
         defaultValue={defaultValue}
-        className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:ring-2 focus:ring-ring focus:outline-none"
+        autoComplete={autoComplete}
+        inputMode={inputMode}
+        className="min-h-11 w-full rounded-lg border border-input bg-background px-3 py-2 text-base focus:ring-2 focus:ring-ring focus:outline-none sm:text-sm"
       />
     </label>
   );
