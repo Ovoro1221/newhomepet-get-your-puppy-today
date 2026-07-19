@@ -17,24 +17,24 @@ function Home() {
     <div>
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:grid-cols-2 md:py-20">
-          <div>
+        <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-10 md:grid-cols-2 md:gap-10 md:py-20">
+          <div className="order-2 md:order-1">
             <span className="inline-flex items-center gap-2 rounded-full bg-accent/30 px-3 py-1 text-xs font-medium text-accent-foreground">
-              🐶 Healthy, happy puppies
+              <span aria-hidden="true">🐶</span> Healthy, happy puppies
             </span>
-            <h1 className="mt-4 text-4xl leading-tight font-semibold md:text-6xl">
+            <h1 className="mt-4 text-3xl leading-tight font-semibold sm:text-4xl md:text-6xl">
               Find your <span className="text-primary">new best friend</span>
             </h1>
-            <p className="mt-4 max-w-md text-lg text-muted-foreground">
+            <p className="mt-3 max-w-md text-base text-muted-foreground sm:text-lg">
               Browse available puppies from trusted breeders. Pick your favorite and we'll deliver them safely to your door.
             </p>
-            <div className="mt-6 flex gap-3">
-              <a href="#puppies" className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-soft transition hover:opacity-90">Browse puppies</a>
-              <Link to="/about" className="rounded-full border border-border px-6 py-3 text-sm font-medium hover:bg-secondary">Learn more</Link>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a href="#puppies" className="inline-flex min-h-11 items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-soft transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">Browse puppies</a>
+              <Link to="/about" className="inline-flex min-h-11 items-center rounded-full border border-border px-6 py-3 text-sm font-medium hover:bg-secondary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">Learn more</Link>
             </div>
           </div>
-          <div className="relative">
-            <img src={heroImg} alt="Happy puppies playing" width={1600} height={900} className="w-full rounded-3xl object-cover shadow-soft" />
+          <div className="relative order-1 md:order-2">
+            <img src={heroImg} alt="Group of happy puppies playing outdoors" width={1600} height={900} className="w-full rounded-2xl object-cover shadow-soft md:rounded-3xl" />
           </div>
         </div>
       </section>
