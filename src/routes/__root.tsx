@@ -87,20 +87,21 @@ function RootShell({ children }: { children: ReactNode }) {
 function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="text-2xl">🐾</span>
-          <span className="font-display text-xl font-semibold">NewHomePet</span>
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/90 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:py-4">
+        <Link to="/" aria-label="NewHomePet home" className="flex items-center gap-2">
+          <span className="text-2xl" aria-hidden="true">🐾</span>
+          <span className="font-display text-lg font-semibold sm:text-xl">NewHomePet</span>
         </Link>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
             aria-label="Open menu"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/80"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
           >
-            <Menu className="h-5 w-5" />
+            <Menu className="h-5 w-5" aria-hidden="true" />
           </SheetTrigger>
-          <SheetContent side="right" className="w-[88%] sm:w-96 overflow-y-auto p-0">
+          <SheetContent side="right" className="w-[92%] sm:w-96 overflow-y-auto p-0">
+            <SheetTitle asChild><VisuallyHidden>Site navigation</VisuallyHidden></SheetTitle>
             <MenuPanel onNavigate={() => setOpen(false)} />
           </SheetContent>
         </Sheet>
