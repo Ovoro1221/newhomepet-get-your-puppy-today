@@ -40,23 +40,23 @@ function Home() {
       </section>
 
       {/* Puppies */}
-      <section id="puppies" className="mx-auto max-w-6xl px-4 py-16">
-        <div className="mb-8 flex items-end justify-between">
-          <div>
-            <h2 className="text-3xl font-semibold md:text-4xl">Available puppies</h2>
-            <p className="mt-1 text-muted-foreground">{available.filter((p) => p.available).length} looking for a home</p>
+      <section id="puppies" className="mx-auto max-w-6xl px-4 py-12 md:py-16">
+        <div className="mb-6 flex flex-wrap items-end justify-between gap-3 md:mb-8">
+          <div className="min-w-0">
+            <h2 className="text-2xl font-semibold sm:text-3xl md:text-4xl">Available puppies</h2>
+            <p className="mt-1 text-sm text-muted-foreground sm:text-base">{available.filter((p) => p.available).length} looking for a home</p>
           </div>
         </div>
 
         {isLoading && <div className="text-muted-foreground">Loading puppies…</div>}
         {!isLoading && available.length === 0 && (
-          <div className="rounded-2xl border border-dashed border-border bg-card p-12 text-center">
-            <div className="text-4xl">🐾</div>
+          <div className="rounded-2xl border border-dashed border-border bg-card p-8 text-center md:p-12">
+            <div className="text-4xl" aria-hidden="true">🐾</div>
             <p className="mt-3 font-medium">No puppies listed yet</p>
             <p className="mt-1 text-sm text-muted-foreground">Sign in as admin to add your first puppy.</p>
           </div>
         )}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {available.map((p) => <PuppyCard key={p.id} puppy={p} />)}
         </div>
       </section>
