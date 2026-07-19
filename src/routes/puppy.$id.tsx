@@ -79,21 +79,21 @@ function PuppyPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
-      <Link to="/" className="text-sm text-muted-foreground hover:text-foreground">← Back to puppies</Link>
-      <div className="mt-6 grid gap-10 md:grid-cols-2">
+    <div className="mx-auto max-w-6xl px-4 py-6 md:py-10">
+      <Link to="/" className="inline-flex min-h-11 items-center text-sm text-muted-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">← Back to puppies</Link>
+      <div className="mt-4 grid gap-8 md:mt-6 md:grid-cols-2 md:gap-10">
         <div>
           <PuppyGallery puppy={puppy} />
-          <div className="mt-6">
-            <h1 className="font-display text-4xl font-semibold">{puppy.name}</h1>
-            <div className="mt-2 flex flex-wrap items-center gap-3">
+          <div className="mt-5 md:mt-6">
+            <h1 className="font-display text-3xl font-semibold sm:text-4xl">{puppy.name}</h1>
+            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
               <Stars value={5} />
               <span className="text-sm text-muted-foreground">5.0 rating</span>
-              <span className="text-sm text-muted-foreground">· ❤ Viewed {puppy.view_count.toLocaleString()} times</span>
+              <span className="text-sm text-muted-foreground">· Viewed {puppy.view_count.toLocaleString()} times</span>
             </div>
-            <p className="mt-3 text-muted-foreground">{puppy.breed} · {puppy.gender} · {puppy.age_weeks} weeks {puppy.color ? `· ${puppy.color}` : ""}</p>
+            <p className="mt-3 text-sm text-muted-foreground sm:text-base">{puppy.breed} · {puppy.gender} · {puppy.age_weeks} weeks {puppy.color ? `· ${puppy.color}` : ""}</p>
             <div className="mt-4 flex flex-wrap items-baseline gap-3">
-              <div className="text-3xl font-semibold text-primary">${puppy.price.toLocaleString()}</div>
+              <div className="text-2xl font-semibold text-primary sm:text-3xl">${puppy.price.toLocaleString()}</div>
               <div className="text-sm text-muted-foreground">Reserve today for <span className="font-semibold text-foreground">${reserve.toLocaleString()}</span> (25%)</div>
             </div>
 
