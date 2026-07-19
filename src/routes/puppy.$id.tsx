@@ -242,7 +242,7 @@ function PuppyFacts({ puppy }: { puppy: Puppy }) {
 }
 
 
-function Field({ label, name, type = "text", required, defaultValue }: { label: string; name: string; type?: string; required?: boolean; defaultValue?: string }) {
+function Field({ label, name, type = "text", required, defaultValue, autoComplete, inputMode }: { label: string; name: string; type?: string; required?: boolean; defaultValue?: string; autoComplete?: string; inputMode?: "text" | "email" | "tel" | "numeric" | "decimal" | "search" | "url" | "none" }) {
   return (
     <label className="block text-sm">
       <span className="mb-1 block font-medium">{label}</span>
@@ -251,7 +251,9 @@ function Field({ label, name, type = "text", required, defaultValue }: { label: 
         type={type}
         required={required}
         defaultValue={defaultValue}
-        className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:ring-2 focus:ring-ring focus:outline-none"
+        autoComplete={autoComplete}
+        inputMode={inputMode}
+        className="min-h-11 w-full rounded-lg border border-input bg-background px-3 py-2 text-base focus:ring-2 focus:ring-ring focus:outline-none sm:text-sm"
       />
     </label>
   );
