@@ -123,29 +123,29 @@ function PuppyPage() {
         </div>
 
 
-        <form onSubmit={onSubmit} className="rounded-3xl border border-border bg-card p-6 shadow-card">
-          <h2 className="font-display text-2xl font-semibold">Checkout</h2>
+        <form onSubmit={onSubmit} aria-label="Reservation checkout" className="rounded-2xl border border-border bg-card p-4 shadow-card sm:rounded-3xl sm:p-6">
+          <h2 className="font-display text-xl font-semibold sm:text-2xl">Checkout</h2>
           <p className="mt-1 text-sm text-muted-foreground">Enter delivery details to reserve {puppy.name}.</p>
 
-          <div className="mt-6 grid gap-4">
-            <Field label="Full name" name="buyer_name" required />
+          <div className="mt-5 grid gap-4 sm:mt-6">
+            <Field label="Full name" name="buyer_name" required autoComplete="name" />
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Email" name="buyer_email" type="email" required />
-              <Field label="Phone" name="buyer_phone" required />
+              <Field label="Email" name="buyer_email" type="email" required autoComplete="email" inputMode="email" />
+              <Field label="Phone" name="buyer_phone" type="tel" required autoComplete="tel" inputMode="tel" />
             </div>
-            <Field label="Address line 1" name="address_line1" required />
-            <Field label="Address line 2 (optional)" name="address_line2" />
+            <Field label="Address line 1" name="address_line1" required autoComplete="address-line1" />
+            <Field label="Address line 2 (optional)" name="address_line2" autoComplete="address-line2" />
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="City" name="city" required />
-              <Field label="State / Region" name="state" required />
+              <Field label="City" name="city" required autoComplete="address-level2" />
+              <Field label="State / Region" name="state" required autoComplete="address-level1" />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Postal code" name="postal_code" required />
-              <Field label="Country" name="country" required defaultValue="United States" />
+              <Field label="Postal code" name="postal_code" required autoComplete="postal-code" inputMode="numeric" />
+              <Field label="Country" name="country" required autoComplete="country-name" defaultValue="United States" />
             </div>
             <label className="block text-sm">
               <span className="mb-1 block font-medium">Delivery notes (optional)</span>
-              <textarea name="delivery_notes" rows={3} className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:ring-2 focus:ring-ring focus:outline-none" />
+              <textarea name="delivery_notes" rows={3} className="min-h-11 w-full rounded-lg border border-input bg-background px-3 py-2 text-base focus:ring-2 focus:ring-ring focus:outline-none sm:text-sm" />
             </label>
 
             <div>
