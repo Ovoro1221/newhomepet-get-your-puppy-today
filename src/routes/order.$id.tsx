@@ -62,6 +62,7 @@ function ContactSeller({ orderId }: { orderId: string }) {
   const phoneDisplay = "+1 (985) 602-3749";
   const phoneE164 = "+19856023749";
   const waNumber = "19856023749";
+  const supportEmail = "Shellymurray074@gmail.com";
   const message = `Hi! I just placed order ${orderId} and would like to arrange payment.`;
   const encoded = encodeURIComponent(message);
   return (
@@ -69,9 +70,11 @@ function ContactSeller({ orderId }: { orderId: string }) {
       <div className="mb-2 font-display text-lg font-semibold">Payment not set up yet</div>
       <p className="text-sm text-muted-foreground">
         PayPal and Bitcoin aren't configured. Please contact the seller directly at{" "}
-        <span className="font-medium text-foreground">{phoneDisplay}</span> to arrange payment.
+        <span className="font-medium text-foreground">{phoneDisplay}</span> or{" "}
+        <a href={`mailto:${supportEmail}?subject=${encodeURIComponent(`Order ${orderId} payment`)}`} className="font-medium text-foreground underline">{supportEmail}</a>{" "}
+        to arrange payment.
       </p>
-      <div className="mt-4 grid gap-2 sm:grid-cols-3">
+      <div className="mt-4 grid gap-2 sm:grid-cols-4">
         <a href={`https://wa.me/${waNumber}?text=${encoded}`} target="_blank" rel="noreferrer"
           className="rounded-lg bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground">
           WhatsApp
@@ -83,6 +86,10 @@ function ContactSeller({ orderId }: { orderId: string }) {
         <a href={`tel:${phoneE164}`}
           className="rounded-lg border border-border bg-background px-4 py-2 text-center text-sm font-medium">
           Call
+        </a>
+        <a href={`mailto:${supportEmail}?subject=${encodeURIComponent(`Order ${orderId} payment`)}&body=${encoded}`}
+          className="rounded-lg border border-border bg-background px-4 py-2 text-center text-sm font-medium">
+          Email
         </a>
       </div>
     </div>

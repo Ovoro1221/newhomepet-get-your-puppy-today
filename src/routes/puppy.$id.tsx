@@ -166,13 +166,15 @@ function PuppyPage() {
                     ? <>Message the seller directly at <span className="font-medium text-foreground">+1 (985) 602-3749</span> to arrange payment for {puppy.name}.</>
                     : <>You can also complete this checkout by messaging the seller at <span className="font-medium text-foreground">+1 (985) 602-3749</span>.</>}
                 </p>
-                <div className="mt-3 grid grid-cols-3 gap-2">
+              <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
                   <a href={`https://wa.me/19856023749?text=${encodeURIComponent(`Hi! I'd like to reserve ${puppy.name} (${puppy.breed}) for $${puppy.price}.`)}`} target="_blank" rel="noreferrer"
                     className="rounded-lg bg-primary px-3 py-2 text-center text-xs font-medium text-primary-foreground">WhatsApp</a>
                   <a href={`sms:+19856023749?body=${encodeURIComponent(`Hi! I'd like to reserve ${puppy.name} (${puppy.breed}) for $${puppy.price}.`)}`}
                     className="rounded-lg border border-border bg-background px-3 py-2 text-center text-xs font-medium">Text</a>
                   <a href="tel:+19856023749"
                     className="rounded-lg border border-border bg-background px-3 py-2 text-center text-xs font-medium">Call</a>
+                  <a href={`mailto:Shellymurray074@gmail.com?subject=${encodeURIComponent(`Reservation for ${puppy.name} (${puppy.breed})`)}&body=${encodeURIComponent(`Hi! I'd like to reserve ${puppy.name} (${puppy.breed}) for $${puppy.price}.`)}`}
+                    className="rounded-lg border border-border bg-background px-3 py-2 text-center text-xs font-medium">Email</a>
                 </div>
               </div>
             </div>
