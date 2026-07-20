@@ -192,16 +192,39 @@ function MenuPanel({ onNavigate }: { onNavigate: () => void }) {
 }
 
 function SiteFooter() {
+  const phoneDisplay = "+1 (985) 602-3749";
+  const phoneE164 = "+19856023749";
+  const waNumber = "19856023749";
+  const email = "Shellymurray074@gmail.com";
   return (
     <footer className="mt-24 border-t border-border/60 bg-secondary/40">
       <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-muted-foreground">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row">
+        <div className="grid gap-8 sm:grid-cols-2">
           <div>
-            <div className="font-display text-lg text-foreground">NewHome Puppies</div>
+            <div className="font-display text-lg text-foreground">NewHomePet</div>
             <p className="mt-1">Bringing families and puppies together.</p>
           </div>
-          <div className="text-xs">© {new Date().getFullYear()} NewHome Puppies. All rights reserved.</div>
+          <div>
+            <div className="font-display text-base font-semibold text-foreground">Contact Support</div>
+            <div className="mt-2 space-y-2">
+              <a href={`mailto:${email}`} className="flex min-h-11 items-center gap-2 text-foreground hover:text-primary">
+                <span aria-hidden="true">✉️</span> {email}
+              </a>
+              <div className="flex flex-wrap items-center gap-2">
+                <a href={`tel:${phoneE164}`} className="inline-flex min-h-11 items-center rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground">
+                  📞 {phoneDisplay}
+                </a>
+                <a href={`sms:${phoneE164}`} className="inline-flex min-h-11 items-center rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground">
+                  💬 Text
+                </a>
+                <a href={`https://wa.me/${waNumber}`} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center rounded-full bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground">
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+        <div className="mt-8 border-t border-border/60 pt-4 text-xs">© {new Date().getFullYear()} NewHomePet. All rights reserved.</div>
       </div>
     </footer>
   );
