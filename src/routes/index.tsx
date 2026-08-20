@@ -1,8 +1,31 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
+import { useMemo, useState } from "react";
 import { fetchPuppies, reservationAmount, type Puppy } from "@/lib/puppies";
 import { ReviewsSection, Stars } from "@/components/Reviews";
 import heroImg from "@/assets/hero-puppies.jpg";
+
+function PuppyThumb({ puppy }: { puppy: Puppy }) {
+  const sources = useMemo(() => {
+    const urls = [puppy.image_url, ...puppy.media.filter((m) => m.type === "image").map((m) => m.url)];
+    return Array.from(new Set(urls.filter(Boolean) as string[]));
+  }, [puppy.image_url, puppy.media]);
+  const [idx, setIdx] = useState(0);
+  const src = sources[idx];
+
+  if (!src) return <div className="flex h-full items-center justify-center text-6xl">🐶</div>;
+
+  return (
+    <img
+      src={src}
+      alt={puppy.name}
+      loading="lazy"
+      onError={() => setIdx((i) => i + 1)}
+      className={`h-full w-full object-cover transition duration-500 group-hover:scale-105 ${!puppy.available ? "opacity-70" : ""}`}
+    />
+  );
+}
+
 
 
 export const Route = createFileRoute("/")({
