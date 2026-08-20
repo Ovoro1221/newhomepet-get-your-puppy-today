@@ -339,7 +339,7 @@ function PuppyForm({ puppy, onDone, onCancel }: { puppy: Puppy | null; onDone: (
       <div className="grid gap-3 sm:col-span-2 sm:grid-cols-2 rounded-2xl border border-dashed border-border p-4">
         <div className="sm:col-span-2 text-sm font-medium">Seller contact (shown to buyers)</div>
         <FInput label="Seller name" name="seller_name" defaultValue={puppy?.seller_name ?? ""} />
-        <FInput label="Seller phone" name="seller_phone" type="tel" defaultValue={puppy?.seller_phone ?? ""} placeholder="+1 985 602 3749" />
+        <FInput label="Seller phone" name="seller_phone" type="tel" defaultValue={puppy?.seller_phone ?? ""} placeholder="+1 281 628 3530" />
         <FInput label="Seller email" name="seller_email" type="email" defaultValue={puppy?.seller_email ?? ""} className="sm:col-span-2" />
         <label className="text-sm sm:col-span-2"><span className="mb-1 block font-medium">Contact notes (optional)</span>
           <textarea name="seller_notes" defaultValue={puppy?.seller_notes ?? ""} rows={2} placeholder="e.g. Text preferred, available 9am-6pm CST"
