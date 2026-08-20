@@ -137,7 +137,7 @@ function MenuPanel({ onNavigate }: { onNavigate: () => void }) {
     <div className="flex h-full flex-col">
       <div className="flex items-center gap-2 px-5 py-4 border-b border-border/60">
         <span className="text-2xl" aria-hidden="true">🐾</span>
-        <span className="font-display text-xl font-semibold text-primary">NewHomePet</span>
+        <span className="font-display text-xl font-semibold text-primary">Evan Lynn Kate Veterinary Clinic</span>
       </div>
       <nav aria-label="Main" className="flex-1 px-2 py-3 text-base">
         <Link to="/about" onClick={onNavigate} className="flex min-h-11 items-center justify-between rounded-lg px-4 py-3 hover:bg-secondary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
