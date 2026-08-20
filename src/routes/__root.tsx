@@ -88,9 +88,9 @@ function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:py-4">
-        <Link to="/" aria-label="NewHomePet home" className="flex items-center gap-2">
+        <Link to="/" aria-label="Evan Lynn Kate Veterinary Clinic home" className="flex items-center gap-2">
           <span className="text-2xl" aria-hidden="true">🐾</span>
-          <span className="font-display text-lg font-semibold sm:text-xl">NewHomePet</span>
+          <span className="font-display text-lg font-semibold sm:text-xl">Evan Lynn Kate Veterinary Clinic</span>
         </Link>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
