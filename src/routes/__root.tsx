@@ -200,8 +200,8 @@ function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-muted-foreground">
         <div className="grid gap-8 sm:grid-cols-2">
           <div>
-            <div className="font-display text-lg text-foreground">NewHomePet</div>
-            <p className="mt-1">Bringing families and puppies together.</p>
+            <div className="font-display text-lg text-foreground">Evan Lynn Kate Veterinary Clinic</div>
+            <p className="mt-1">Bringing families and puppies together. <span className="text-primary font-medium">Fluffy's Health</span></p>
           </div>
           <div>
             <div className="font-display text-base font-semibold text-foreground">Contact Support</div>
@@ -223,7 +223,7 @@ function SiteFooter() {
             </div>
           </div>
         </div>
-        <div className="mt-8 border-t border-border/60 pt-4 text-xs">© {new Date().getFullYear()} NewHomePet. All rights reserved.</div>
+        <div className="mt-8 border-t border-border/60 pt-4 text-xs">© {new Date().getFullYear()} Evan Lynn Kate Veterinary Clinic. All rights reserved.</div>
       </div>
     </footer>
   );
