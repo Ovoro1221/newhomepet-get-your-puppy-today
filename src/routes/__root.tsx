@@ -223,7 +223,7 @@ function SiteFooter() {
             </div>
           </div>
         </div>
-        <div className="mt-8 border-t border-border/60 pt-4 text-xs">© {new Date().getFullYear()} NewHomePet. All rights reserved.</div>
+        <div className="mt-8 border-t border-border/60 pt-4 text-xs">© {new Date().getFullYear()} Evan Lynn Kate Veterinary Clinic. All rights reserved.</div>
       </div>
     </footer>
   );
