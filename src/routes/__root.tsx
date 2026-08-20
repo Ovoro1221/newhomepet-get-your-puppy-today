@@ -183,7 +183,7 @@ function MenuPanel({ onNavigate }: { onNavigate: () => void }) {
       </nav>
       <div className="border-t border-border/60 px-5 py-5">
         <p className="text-sm leading-relaxed">
-          <span className="font-semibold">Welcome to NewHomePet.</span> Explore our beautiful, healthy puppies and find a loving companion ready for a new home.
+          <span className="font-semibold">Welcome to Evan Lynn Kate Veterinary Clinic.</span> With Fluffy's Health, explore our beautiful, healthy puppies and find a loving companion ready for a new home.
         </p>
       </div>
     </div>
