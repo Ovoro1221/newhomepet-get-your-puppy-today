@@ -191,10 +191,10 @@ function MenuPanel({ onNavigate }: { onNavigate: () => void }) {
 }
 
 function SiteFooter() {
-  const phoneDisplay = "+1 (985) 602-3749";
-  const phoneE164 = "+19856023749";
-  const waNumber = "19856023749";
-  const email = "Shellymurray074@gmail.com";
+  const phoneDisplay = "+1 (281) 628-3530";
+  const phoneE164 = "+12816283530";
+  const waNumber = "12816283530";
+  const email = "johnbaritamar@gmail.com";
   return (
     <footer className="mt-24 border-t border-border/60 bg-secondary/40">
       <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-muted-foreground">
