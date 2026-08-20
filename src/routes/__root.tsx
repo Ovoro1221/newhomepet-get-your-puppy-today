@@ -50,14 +50,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "NewHome Puppies — Find your new best friend" },
-      { name: "description", content: "Adopt healthy, happy puppies from trusted breeders. Browse available puppies and bring one home today." },
-      { property: "og:title", content: "NewHome Puppies — Find your new best friend" },
-      { property: "og:description", content: "Adopt healthy, happy puppies from trusted breeders. Browse available puppies and bring one home today." },
+      { title: "Evan Lynn Kate Veterinary Clinic — Fluffy's Health | Find your new best friend" },
+      { name: "description", content: "Evan Lynn Kate Veterinary Clinic with Fluffy's Health — adopt healthy, happy puppies from trusted breeders. Browse available puppies and bring one home today." },
+      { property: "og:title", content: "Evan Lynn Kate Veterinary Clinic — Fluffy's Health | Find your new best friend" },
+      { property: "og:description", content: "Evan Lynn Kate Veterinary Clinic with Fluffy's Health — adopt healthy, happy puppies from trusted breeders. Browse available puppies and bring one home today." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "NewHome Puppies — Find your new best friend" },
-      { name: "twitter:description", content: "Adopt healthy, happy puppies from trusted breeders. Browse available puppies and bring one home today." },
+      { name: "twitter:title", content: "Evan Lynn Kate Veterinary Clinic — Fluffy's Health | Find your new best friend" },
+      { name: "twitter:description", content: "Evan Lynn Kate Veterinary Clinic with Fluffy's Health — adopt healthy, happy puppies from trusted breeders. Browse available puppies and bring one home today." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/49b043b3-fe15-4a0a-9420-3b69407bc085/id-preview-51ebda1b--d496015d-4782-456f-9411-7c20e528718a.lovable.app-1784250976168.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/49b043b3-fe15-4a0a-9420-3b69407bc085/id-preview-51ebda1b--d496015d-4782-456f-9411-7c20e528718a.lovable.app-1784250976168.png" },
     ],
@@ -88,9 +88,9 @@ function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:py-4">
-        <Link to="/" aria-label="NewHomePet home" className="flex items-center gap-2">
+        <Link to="/" aria-label="Evan Lynn Kate Veterinary Clinic home" className="flex items-center gap-2">
           <span className="text-2xl" aria-hidden="true">🐾</span>
-          <span className="font-display text-lg font-semibold sm:text-xl">NewHomePet</span>
+          <span className="font-display text-lg font-semibold sm:text-xl">Evan Lynn Kate Veterinary Clinic</span>
         </Link>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
@@ -137,7 +137,7 @@ function MenuPanel({ onNavigate }: { onNavigate: () => void }) {
     <div className="flex h-full flex-col">
       <div className="flex items-center gap-2 px-5 py-4 border-b border-border/60">
         <span className="text-2xl" aria-hidden="true">🐾</span>
-        <span className="font-display text-xl font-semibold text-primary">NewHomePet</span>
+        <span className="font-display text-xl font-semibold text-primary">Evan Lynn Kate Veterinary Clinic</span>
       </div>
       <nav aria-label="Main" className="flex-1 px-2 py-3 text-base">
         <Link to="/about" onClick={onNavigate} className="flex min-h-11 items-center justify-between rounded-lg px-4 py-3 hover:bg-secondary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
@@ -183,7 +183,7 @@ function MenuPanel({ onNavigate }: { onNavigate: () => void }) {
       </nav>
       <div className="border-t border-border/60 px-5 py-5">
         <p className="text-sm leading-relaxed">
-          <span className="font-semibold">Welcome to NewHomePet.</span> Explore our beautiful, healthy puppies and find a loving companion ready for a new home.
+          <span className="font-semibold">Welcome to Evan Lynn Kate Veterinary Clinic.</span> With Fluffy's Health, explore our beautiful, healthy puppies and find a loving companion ready for a new home.
         </p>
       </div>
     </div>
