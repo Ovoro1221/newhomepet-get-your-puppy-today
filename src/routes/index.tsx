@@ -75,11 +75,8 @@ function PuppyCard({ puppy }: { puppy: Puppy }) {
       className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:shadow-soft"
     >
       <div className="relative aspect-square overflow-hidden bg-muted">
-        {puppy.image_url ? (
-          <img src={puppy.image_url} alt={puppy.name} loading="lazy" className={`h-full w-full object-cover transition duration-500 group-hover:scale-105 ${!puppy.available ? "opacity-70" : ""}`} />
-        ) : (
-          <div className="flex h-full items-center justify-center text-6xl">🐶</div>
-        )}
+        <PuppyThumb puppy={puppy} />
+
         {!puppy.available && (
           <span className="absolute left-3 top-3 rounded-full bg-destructive px-3 py-1 text-xs font-semibold text-destructive-foreground shadow-soft">Sold</span>
         )}
